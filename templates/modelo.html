@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AGRO-ANALYTICS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="templates/estilo.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        form {
+            width: 90%;
+            padding: 16px;
+            border-radius: 10px;
+            margin: auto;
+            background-color: #E4F4F7;
+            box-shadow: 5px 5px 5px #BFD5DA;
+            display: inline-block;
+            opacity: 0, 5;
+        }
+    </style>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:5000/procesamiento">PROCESAMIENTO DE LOS DATOS</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://127.0.0.1:5000/modelo">MODELO  DE PREDICCIÓN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container"><br>
+        <form action="http://127.0.0.1:5000/parametros" method="POST">
+            <br>
+            <h2 style="text-align: center;">AGRO-ANALYTICS</h2>
+            <h4 style="margin-left: 27%; color: gray; font-size: 150%;"> Sistema de predicción de la producción </h4>
+            <h4 style="margin-left: 24%; color: gray;font-size: 150%;">de cultivos de Maíz, Arroz y Café en Colombia</h4>
+            <br>
+            <i style="color: gold; margin-left: 30%;">Ingrese los siguientes datos para realizar la predicción:</i>
+            <br>
+
+            <h5 style="margin-left: 15%;">Seleccione el cultivo a predecir:</h5>
+            <select name="cultivo" id="cultivo" style="margin-left: 15%; width: 70%;">
+                <option value="1">Arroz</option>
+                <option value="2">Café</option>
+                <option value="0">Maíz</option>
+              </select>
+            <br>
+            <h5 style="margin-left: 15%;">Seleccione el departamento:</h5>
+            <select name="departamento" id="departamento" style="margin-left: 15%; width: 70%;">
+                <option value="5">Antioquia</option>
+                <option value="13">Bolivar</option>
+                <option value="85">Casanare</option>
+                <option value="17">CALDAS</option>
+                <option value="13">Bolivar</option>
+                <option value="19">CAUCA</option>
+                <option value="20">CESAR</option>
+                <option value="23">CORDOBA</option>
+                <option value="41">HUILA</option>
+                <option value="44">LA GUAJIRA</option>
+                <option value="50">META</option>
+                <option value="63">QUINDIO</option>
+                <option value="66">RISARALDA</option>
+                <option value="68">SANTANDER</option>
+                <option value="70">SUCRE</option>
+                <option value="73">TOLIMA</option>
+                <option value="76">VALLE DEL CAUCA</option>
+                <option value="54">NORTE DE SANTANDER</option>
+                <option value="8">ATLANTICO</option>
+                <option value="25">CUNDINAMARCA</option>
+                <option value="52">NARIÑO</option>
+                <option value="99">VICHADA</option>
+                <option value="18">CAQUETA</option>
+                <option value="15">BOYACA</option>
+                <option value="27">CHOCO</option>
+                <option value="47">MAGDALENA</option>
+                <option value="81">ARAUCA</option>
+                <option value="94">GUAINIA</option>
+                <option value="95">GUAVIARE</option>
+                <option value="86">PUTUMAYO</option>
+                <option value="97">VAUPES</option>
+                <option value="88">SAN ANDRES Y PROVIDENCIA</option>
+              </select>
+            <br>
+            <h5 style="margin-left: 15%;">Área sembrada (Hec):</h5>
+            <input type="number" id="Asembrada" name="Asembrada" style="margin-left: 15%; width: 70%;">
+            <br>
+            <h5 style="margin-left: 15%;">Área esperada cosechada (Hec):</h5>
+            <input type="number" name="Acosechada" id="Acosechada" style="margin-left: 15%; width: 70%;">
+            <br>
+            <br>
+            <div style=" text-align: center;">
+                <button type="submit" class="btn btn-success">Realizar Predicción</button>
+            </div>
+            <p style="margin-left: 15%; color: green; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 150%;">{{resul}}</p>
+        </form>
+
+    </div>
+</body>
+
+</html>
