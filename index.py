@@ -30,7 +30,7 @@ cultivos = pd.DataFrame(mv_list_recs)
 #mv_list_recs
 #En la consola ejecutar para que sea en tiempo real 
 # set "FLASK_ENV=development"
-#set FLASK_APP=index.py
+#set FLASK_APP=src/index.py
 
 #Eliminamos las columnas no necesarias
 cultivos = cultivos.drop(['nombre_cientifico'], axis=1)
@@ -83,32 +83,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('modelo.html')
 
 @app.route('/procesamiento')
 def procesamiento():
-
-    trace = go.Scatter(x=dGraficar['PRODUCCION'], y=dGraficar['AREA COSECHADA'])
-    #output = io.BytesIO()
-    #plt.legend()
-    #plt.savefig(output, format='png')
-    #hola= Response(output.getvalue(), mimetype='image/png')
-    data = [trace] 
-    graphJSON = json.dumps (data, cls = plotly.utils.PlotlyJSONEncoder) 
-    return render_template('Sakila.html')
+    return render_template('.../Sakila.html')
 @app.route('/modelo')
 def modelo():
     return render_template('modelo.html')
 
 @app.route('/parametros',methods=['GET', 'POST'])
 def parametros():
+    
     if request.method == "POST":
-        
+        res=0
         cultivo = request.form['cultivo']
         departamento = request.form['departamento']
         Asembrada = request.form['Asembrada']
         Acosechada = request.form['Acosechada']
-        if Acosechada > Asembrada:
+        if int(Acosechada) > int(Asembrada):
             res = "EL área cosechada no podrá ser mayor al área sembrada"
             
         else:
